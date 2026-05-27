@@ -119,6 +119,7 @@ src/
 ## 🔗 Comunicação com o back-end
 
 O front-end consome dados da API do sistema de agendamentos através de services Angular.
+API disponível em https://github.com/luisSancho1234/spring-agendador
 
 ---
 
