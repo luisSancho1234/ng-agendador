@@ -1,119 +1,161 @@
-# NGAgendador - Front-end Angular
+# 📅 NGAgendador - Front-end Angular
 
 Este projeto corresponde ao front-end do sistema de agendamentos, desenvolvido em Angular.  
 A aplicação permite a interação com usuários, visualização de agendamentos, gerenciamento de dados e comunicação com a API back-end do sistema.
 
-## Tecnologias utilizadas
+---
 
-- Angular
-- TypeScript
-- HTML
-- CSS / Tailwind CSS
-- RxJS
-- Angular Router
-- FontAwesome
-- API REST
+## 🚀 Tecnologias utilizadas
 
-## Pré-requisitos
+- 🅰️ Angular
+- 📘 TypeScript
+- 🌐 HTML
+- 🎨 CSS / Tailwind CSS
+- 🔄 RxJS
+- 🧭 Angular Router
+- ⭐ FontAwesome
+- 🔌 API REST
+
+---
+
+## 📋 Pré-requisitos
 
 Antes de executar o projeto, é necessário ter instalado:
 
-- Node.js
-- npm
-- Angular CLI
+- 🟢 Node.js
+- 📦 npm
+- 🅰️ Angular CLI
 
 Para verificar as versões instaladas:
 
-    node -v
-    npm -v
-    ng version
+```bash
+node -v
+npm -v
+ng version
+```
 
-Caso o Angular CLI não esteja instalado, execute:
+Caso o Angular CLI não esteja instalado:
 
-    npm install -g @angular/cli
+```bash
+npm install -g @angular/cli
+```
 
-## Instalação
+---
+
+## ⚙️ Instalação
 
 Clone o repositório:
 
-    git clone <URL_DO_REPOSITORIO>
+```bash
+git clone <URL_DO_REPOSITORIO>
+```
 
 Acesse a pasta do projeto:
 
-    cd ng-agendador
+```bash
+cd ng-agendador
+```
 
 Instale as dependências:
 
-    npm install
+```bash
+npm install
+```
 
-## Executando o projeto
+---
+
+## ▶️ Executando o projeto
 
 Para iniciar o servidor de desenvolvimento:
 
-    ng serve
+```bash
+ng serve
+```
 
-Depois, acesse no navegador:
+Depois, acesse:
 
-    http://localhost:4200
+```bash
+http://localhost:4200
+```
 
-A aplicação será recarregada automaticamente sempre que houver alteração nos arquivos do projeto.
+💡 A aplicação será recarregada automaticamente a cada alteração.
 
-## Build do projeto
+---
+
+## 🏗️ Build do projeto
 
 Para gerar a versão de produção:
 
-    ng build
+```bash
+ng build
+```
 
-Os arquivos finais serão gerados na pasta:
+Arquivos gerados:
 
-    dist/
+```bash
+dist/
+```
 
-## Estrutura básica do projeto
+---
 
-    src/
-    ├── app/
-    │   ├── components/
-    │   ├── pages/
-    │   ├── services/
-    │   ├── models/
-    │   ├── enums/
-    │   └── app-routing.module.ts
-    ├── assets/
-    ├── environments/
-    └── styles.css
+## 📁 Estrutura básica do projeto
 
-## Comunicação com o back-end
+```bash
+src/
+├── app/
+│   ├── components/
+│   ├── pages/
+│   ├── services/
+│   ├── models/
+│   ├── enums/
+│   └── app-routing.module.ts
+├── assets/
+├── environments/
+└── styles.css
+```
 
-O front-end consome os dados da API do sistema de agendamentos por meio de serviços Angular.
+---
 
-## Principais funcionalidades
+## 🔗 Comunicação com o back-end
 
-- Listagem de agendamentos
-- Cadastro de novos agendamentos
-- Edição de agendamentos existentes
-- Filtro por status dos agendamentos
-- Integração com API REST
-- Interface responsiva
+O front-end consome dados da API do sistema de agendamentos através de services Angular.
 
-## Padrão de desenvolvimento
+---
+
+## ✨ Principais funcionalidades
+
+- 📄 Listagem de agendamentos
+- ➕ Cadastro de novos agendamentos
+- ✏️ Edição de agendamentos
+- 🔍 Filtro por status
+- 🔌 Integração com API REST
+- 📱 Interface responsiva
+
+---
+
+## 🧠 Padrão de desenvolvimento
 
 O projeto utiliza componentes Angular para organizar a interface e services para centralizar a comunicação com o back-end.
 
 Boas práticas adotadas:
 
-- Separação entre componentes, services e models
-- Uso de tipagem com TypeScript
-- Organização por responsabilidade
-- Uso de paginação quando necessário
-- Tratamento de dados nulos ou opcionais no template
+- 🧩 Separação entre components, services e models
+- 📘 Uso de tipagem com TypeScript
+- 📂 Organização por responsabilidade
+- 📄 Uso de paginação quando necessário
+- 🛡️ Tratamento de dados nulos ou opcionais
 
-## Observações importantes
+---
 
-- Verifique se o back-end está em execução antes de utilizar as funcionalidades integradas.
-- Após instalar novas bibliotecas, reinicie o servidor Angular.
-- Evite regras de negócio complexas diretamente nos templates HTML.
-- Prefira centralizar chamadas HTTP dentro dos services.
+## ⚠️ Observações importantes
 
-## Autor
+- ✅ Verifique se o back-end está em execução
+- 🔄 Após instalar bibliotecas, reinicie o servidor
+- 🚫 Evite regras de negócio complexas no HTML
+- 📡 Centralize chamadas HTTP nos services
 
-Projeto desenvolvido por mim, Luis Fernando Sancho.
+---
+
+## 👨‍💻 Autor
+
+Projeto desenvolvido por **Luis Fernando Sancho**
