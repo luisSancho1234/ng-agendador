@@ -1,1 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components{
+
+  .input-style {
+    @apply w-full bg-white outline-none text-gray-900
+    px-3 py-[0.306rem] rounded-md text-base placeholder:text-gray-500
+    placeholder:text-base transition-shadow focus:outline-none focus:ring-0
+    duration-300 disabled:placeholder:opacity-40 placeholder:font-medium
+    disabled:border-blue-300 disabled:text-gray-700 cursor-pointer
+    border-b-2 border-blue-400;
+  }
+}
+
+body{
+  background-color: #d9e1ee;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+
 /* You can add global styles to this file, and also import other style files */

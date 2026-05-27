@@ -1,0 +1,166 @@
+<div class="grid grid-cols-6">
+  <div class="col-span-1"></div>
+  <div class="sm:col-span-4 col-span-full flex flex-col gap-4">
+    <div class="flex justify-between items-center">
+      <h1 class="text-3xl font-extrabold text-blue-900">Agendamentos</h1>
+      <div
+        class="text-3xl h-fit text-blue-900 p-4"
+        (click)="criarAgendamento()"
+      >
+        <fa-icon icon="plus-circle"></fa-icon>
+      </div>
+    </div>
+
+    <div class="flex gap-3 w-full overflow-x-auto p-2">
+      <ng-container
+        *ngFor="let key of AgendamentoStatusEnum | keyvalue: ordenarStatus"
+      >
+        <div
+          [class]="
+            ((agendamentoFilter$.value.status != null && key.value == agendamentoFilter$.value.status) ?
+            getRingStyle(key.value) : '' )+
+            getBadgeStatusClass(key.value, true) +
+            ' flex w-fit flex-col text-center bg-white rounded-2xl px-4 py-2 cursor-pointer'
+          "
+          (click)="onStatusChange(key.value)"
+          [ngClass]="{
+            'opacity-35':
+              agendamentoFilter$.value.status != null && key.value != agendamentoFilter$.value.status,
+          }"
+        >
+          <p [class]="getTextStatusClass(key.value)">{{ key.key }}</p>
+          <h1 class="text-2xl font-bold text-slate-700">{{ getCount(key.value) }}</h1>
+        </div>
+      </ng-container>
+    </div>
+
+    <div *ngIf="agendamentosEmpty" class="text-center text-gray-500">
+      Nenhum agendamento encontrado.
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+      <ng-container
+        *ngFor="
+          let agendamento of agendamentos$ | async;
+          trackBy: trackByAgeNrId
+        "
+      >
+        <div
+          class="flex justify-between items-center col-span-1 min-w-32 text-slate-700 bg-white rounded-2xl shadow-xl pl-4 py-2"
+        >
+          <div class="flex flex-col justify-between h-full">
+            <h1 class="text-lg font-bold text-ellipsis">
+              {{ agendamento.ageTxNome }}
+            </h1>
+            <p class="text-slate-500">
+              Data:
+              {{ agendamento.ageDtAgendamento | date: "dd/MM/yyyy HH:mm" }}
+            </p>
+            <div
+              [class]="
+                getBadgeStatusClass(agendamento.ageTxStatus) +
+                'flex w-fit px-2 py-1 my-1 rounded-lg items-center justify-center'
+              "
+            >
+              <p [class]="getTextStatusClass(agendamento.ageTxStatus)">
+                {{ agendamento.ageTxStatus }}
+              </p>
+            </div>
+          </div>
+          <div
+            class="h-full flex pr-3 items-center cursor-pointer"
+            (click)="abrirAgendamento(agendamento.ageNrId)"
+          >
+            <fa-icon
+              class="text-slate-500 text-lg"
+              icon="chevron-right"
+            ></fa-icon>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <!-- Pagination -->
+    <div
+      class="flex items-center justify-center w-full text-center gap-2 py-4"
+      *ngIf="pageData && totalPages > 1"
+    >
+      <div class="flex flex-col gap-2">
+        <div class="flex gap-1 w-full justify-center">
+          <!-- Previous Button -->
+          <button
+            (click)="prevPage()"
+            [disabled]="!hasPrevPage"
+            class="px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          >
+            <fa-icon icon="chevron-left"></fa-icon>
+          </button>
+
+          <!-- Page Numbers -->
+          <!-- First page button if not in range -->
+          <button
+            *ngIf="getPageNumbers()[0] > 0"
+            (click)="goToPage(0)"
+            class="px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+          >
+            1
+          </button>
+
+          <!-- Ellipsis if gap exists -->
+          <span *ngIf="getPageNumbers()[0] > 1" class="px-2 py-2 text-gray-500"
+            >...</span
+          >
+
+          <!-- Page number buttons -->
+          <button
+            *ngFor="let page of getPageNumbers()"
+            (click)="goToPage(page)"
+            [class.bg-blue-600]="currentPage === page"
+            [class.text-white]="currentPage === page"
+            [class.bg-white]="currentPage !== page"
+            [class.text-gray-700]="currentPage !== page"
+            class="px-3 py-2 text-sm font-medium border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-blue-700 transition-colors"
+            [ngClass]="{ 'border-blue-600': currentPage === page }"
+          >
+            {{ page + 1 }}
+          </button>
+
+          <!-- Ellipsis if gap exists -->
+          <span
+            *ngIf="
+              getPageNumbers()[getPageNumbers().length - 1] < totalPages - 2
+            "
+            class="px-2 py-2 text-gray-500"
+            >...</span
+          >
+
+          <!-- Last page button if not in range -->
+          <button
+            *ngIf="
+              getPageNumbers()[getPageNumbers().length - 1] < totalPages - 1
+            "
+            (click)="goToPage(totalPages - 1)"
+            class="px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+          >
+            {{ totalPages }}
+          </button>
+
+          <!-- Next Button -->
+          <button
+            (click)="nextPage()"
+            [disabled]="!hasNextPage"
+            class="px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          >
+            <fa-icon icon="chevron-right"></fa-icon>
+          </button>
+        </div>
+
+        <!-- Page Info -->
+        <span class="text-sm text-gray-600 ml-4">
+          Página {{ currentPage + 1 }} de {{ totalPages }}
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="col-span-1"></div>
+</div>
