@@ -1,27 +1,119 @@
-# NgAgendador
+# NGAgendador - Front-end Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.3.
+Este projeto corresponde ao front-end do sistema de agendamentos, desenvolvido em Angular.  
+A aplicação permite a interação com usuários, visualização de agendamentos, gerenciamento de dados e comunicação com a API back-end do sistema.
 
-## Development server
+## Tecnologias utilizadas
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Angular
+- TypeScript
+- HTML
+- CSS / Tailwind CSS
+- RxJS
+- Angular Router
+- FontAwesome
+- API REST
 
-## Code scaffolding
+## Pré-requisitos
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Antes de executar o projeto, é necessário ter instalado:
 
-## Build
+- Node.js
+- npm
+- Angular CLI
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Para verificar as versões instaladas:
 
-## Running unit tests
+    node -v
+    npm -v
+    ng version
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Caso o Angular CLI não esteja instalado, execute:
 
-## Running end-to-end tests
+    npm install -g @angular/cli
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Instalação
 
-## Further help
+Clone o repositório:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+    git clone <URL_DO_REPOSITORIO>
+
+Acesse a pasta do projeto:
+
+    cd ng-agendador
+
+Instale as dependências:
+
+    npm install
+
+## Executando o projeto
+
+Para iniciar o servidor de desenvolvimento:
+
+    ng serve
+
+Depois, acesse no navegador:
+
+    http://localhost:4200
+
+A aplicação será recarregada automaticamente sempre que houver alteração nos arquivos do projeto.
+
+## Build do projeto
+
+Para gerar a versão de produção:
+
+    ng build
+
+Os arquivos finais serão gerados na pasta:
+
+    dist/
+
+## Estrutura básica do projeto
+
+    src/
+    ├── app/
+    │   ├── components/
+    │   ├── pages/
+    │   ├── services/
+    │   ├── models/
+    │   ├── enums/
+    │   └── app-routing.module.ts
+    ├── assets/
+    ├── environments/
+    └── styles.css
+
+## Comunicação com o back-end
+
+O front-end consome os dados da API do sistema de agendamentos por meio de serviços Angular.
+
+## Principais funcionalidades
+
+- Listagem de agendamentos
+- Cadastro de novos agendamentos
+- Edição de agendamentos existentes
+- Filtro por status dos agendamentos
+- Integração com API REST
+- Interface responsiva
+
+## Padrão de desenvolvimento
+
+O projeto utiliza componentes Angular para organizar a interface e services para centralizar a comunicação com o back-end.
+
+Boas práticas adotadas:
+
+- Separação entre componentes, services e models
+- Uso de tipagem com TypeScript
+- Organização por responsabilidade
+- Uso de paginação quando necessário
+- Tratamento de dados nulos ou opcionais no template
+
+## Observações importantes
+
+- Verifique se o back-end está em execução antes de utilizar as funcionalidades integradas.
+- Após instalar novas bibliotecas, reinicie o servidor Angular.
+- Evite regras de negócio complexas diretamente nos templates HTML.
+- Prefira centralizar chamadas HTTP dentro dos services.
+
+## Autor
+
+Projeto desenvolvido por mim, Luis Fernando Sancho.
